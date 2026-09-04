@@ -1,0 +1,117 @@
+/* Estilos exclusivos do conteúdo do Dashboard. */
+.dashboard-header {
+    align-items: center;
+    display: flex;
+    gap: 1.25rem;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+    font-size: clamp(1.7rem, 5vw, 2.4rem);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin: 0.35rem 0 0.55rem;
+}
+
+.dashboard-header p:not(.eyebrow) {
+    color: var(--color-muted);
+    margin: 0;
+}
+
+.user-avatar {
+    align-items: center;
+    background: var(--color-primary-soft);
+    border: 1px solid #c9d9f6;
+    border-radius: 50%;
+    color: var(--color-primary);
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-size: 1.1rem;
+    font-weight: 800;
+    height: 3rem;
+    justify-content: center;
+    width: 3rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+.dashboard-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 13px rgba(23, 32, 51, 0.04);
+    padding: 1.35rem;
+}
+
+.card-icon {
+    align-items: center;
+    background: var(--color-primary-soft);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    display: inline-flex;
+    font-weight: 800;
+    height: 2.25rem;
+    justify-content: center;
+    width: 2.25rem;
+}
+
+.card-label {
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin: 1rem 0 0.3rem;
+    text-transform: uppercase;
+}
+
+.dashboard-card h2 {
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+.dashboard-card p:not(.card-label) {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    margin: 0.5rem 0 0;
+}
+
+.dashboard-card .email-value {
+    overflow-wrap: anywhere;
+}
+
+.user-data-list {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1rem 0 0;
+}
+
+.user-data-list div {
+    border-top: 1px solid var(--color-border);
+    padding-top: 0.7rem;
+}
+
+.user-data-list dt {
+    color: var(--color-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.user-data-list dd {
+    margin: 0.15rem 0 0;
+    overflow-wrap: anywhere;
+}
+
+.dashboard-alert {
+    color: var(--color-danger) !important;
+}
+
+@media (min-width: 48rem) {
+    .dashboard-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

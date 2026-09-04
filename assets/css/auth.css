@@ -1,0 +1,448 @@
+/* Faz a página de autenticação ocupar, no mínimo,
+   toda a altura visível da tela. */
+.auth-page {
+    min-height: 100vh;
+}
+
+/* Container principal das telas de login e cadastro. */
+.auth-layout {
+
+    /* Centraliza o card verticalmente. */
+    align-items: center;
+
+    /* Ativa o Flexbox. */
+    display: flex;
+
+    /* Centraliza o card horizontalmente. */
+    justify-content: center;
+
+    /* Faz o layout ocupar pelo menos toda a altura da tela. */
+    min-height: 100vh;
+
+    /* Cria um espaço interno nas bordas,
+       evitando que o card encoste na tela no celular. */
+    padding: 1.25rem;
+}
+
+/* Card principal que contém o formulário. */
+.auth-card {
+
+    /* Define a cor de fundo do card. */
+    background: var(--color-surface);
+
+    /* Cria uma borda suave ao redor do card. */
+    border: 1px solid rgba(216, 224, 236, 0.8);
+
+    /* Arredonda os cantos usando uma variável global. */
+    border-radius: var(--radius-lg);
+
+    /* Adiciona uma sombra definida nas variáveis globais. */
+    box-shadow: var(--shadow-card);
+
+    /* Impede que o card fique largo demais em telas grandes. */
+    max-width: 31rem;
+
+    /* Cria espaço interno dentro do card. */
+    padding: 1.75rem;
+
+    /* Faz o card ocupar toda a largura disponível,
+       respeitando o max-width. */
+    width: 100%;
+}
+
+/* Área de título e subtítulo da tela de autenticação. */
+.auth-heading {
+
+    /* Cria espaço acima e abaixo do cabeçalho. */
+    margin: 2rem 0 1.5rem;
+}
+
+/* Título principal dentro do cabeçalho. */
+.auth-heading h1 {
+
+    /* Define um tamanho responsivo para o título.
+       O mínimo é 1.65rem e o máximo é 2rem. */
+    font-size: clamp(1.65rem, 5vw, 2rem);
+
+    /* Aproxima levemente as letras para dar
+       uma aparência mais moderna. */
+    letter-spacing: -0.035em;
+
+    /* Controla a altura das linhas do título. */
+    line-height: 1.15;
+
+    /* Define a margem ao redor do título. */
+    margin: 0.35rem 0 0.6rem;
+}
+
+/* Seleciona os parágrafos dentro de .auth-heading,
+   exceto os que possuem a classe .eyebrow. */
+.auth-heading p:not(.eyebrow) {
+
+    /* Usa uma cor mais suave para o subtítulo. */
+    color: var(--color-muted);
+
+    /* Remove a margem padrão do parágrafo. */
+    margin: 0;
+}
+
+/* Formulário de autenticação. */
+.auth-form {
+
+    /* Organiza os campos usando CSS Grid. */
+    display: grid;
+
+    /* Cria espaço entre cada elemento do formulário. */
+    gap: 1.1rem;
+}
+
+/* Agrupa label, input e mensagem de feedback. */
+.field-group {
+
+    /* Organiza os elementos verticalmente com Grid. */
+    display: grid;
+
+    /* Define um pequeno espaço entre label e input. */
+    gap: 0.45rem;
+}
+
+/* Labels dos campos. */
+.field-group label {
+
+    /* Define o tamanho da fonte. */
+    font-size: 0.9rem;
+
+    /* Deixa o texto mais destacado. */
+    font-weight: 700;
+}
+
+/* Inputs dentro de cada grupo de campo. */
+.field-group input {
+
+    /* Define o fundo branco do campo. */
+    background: #fff;
+
+    /* Cria uma borda padrão. */
+    border: 1px solid var(--color-border);
+
+    /* Arredonda os cantos. */
+    border-radius: var(--radius-sm);
+
+    /* Define a cor do texto digitado. */
+    color: var(--color-text);
+
+    /* Garante uma altura mínima confortável para clique e toque. */
+    min-height: 2.9rem;
+
+    /* Cria espaço interno dentro do input. */
+    padding: 0.7rem 0.8rem;
+
+    /* Suaviza mudanças de borda e sombra,
+       por exemplo ao focar o campo. */
+    transition: border-color var(--transition),
+                box-shadow var(--transition);
+
+    /* Faz o campo ocupar toda a largura disponível. */
+    width: 100%;
+}
+
+/* Estiliza o texto de placeholder. */
+.field-group input::placeholder {
+
+    /* Usa uma cor mais clara para diferenciar
+       placeholder de texto digitado. */
+    color: #94a3b8;
+}
+
+/* Quando o mouse passa sobre o campo. */
+.field-group input:hover {
+
+    /* Escurece um pouco a borda para indicar interação. */
+    border-color: #aab8cb;
+}
+
+/* Quando o usuário clica no campo ou navega até ele pelo teclado. */
+.field-group input:focus {
+
+    /* Usa a cor principal na borda. */
+    border-color: var(--color-primary);
+
+    /* Cria um contorno visual suave ao redor do campo,
+       facilitando perceber qual campo está ativo. */
+    box-shadow: 0 0 0 3px rgba(31, 75, 153, 0.12);
+
+    /* Remove o outline padrão do navegador,
+       já que foi criado outro foco visível. */
+    outline: none;
+}
+
+/* Seleciona inputs marcados como inválidos
+   pelo atributo aria-invalid="true". */
+.field-group input[aria-invalid="true"] {
+
+    /* Muda a borda para a cor de erro. */
+    border-color: var(--color-danger);
+}
+
+/* Container do campo de senha e botão Mostrar/Esconder. */
+.password-wrapper {
+
+    /* Faz com que elementos posicionados de forma absoluta
+       usem este container como referência. */
+    position: relative;
+}
+
+/* Input localizado dentro do campo de senha. */
+.password-wrapper input {
+
+    /* Cria espaço extra no lado direito,
+       evitando que o texto digitado fique embaixo
+       do botão Mostrar/Esconder. */
+    padding-right: 5.25rem;
+}
+
+/* Botão Mostrar/Esconder senha. */
+.password-toggle {
+
+    /* Remove o fundo padrão do botão. */
+    background: transparent;
+
+    /* Remove a borda padrão. */
+    border: 0;
+
+    /* Arredonda discretamente os cantos. */
+    border-radius: 0.3rem;
+
+    /* Usa a cor principal no texto. */
+    color: var(--color-primary);
+
+    /* Define um tamanho pequeno para o texto do botão. */
+    font-size: 0.78rem;
+
+    /* Deixa o texto em negrito. */
+    font-weight: 800;
+
+    /* Cria uma pequena área interna clicável. */
+    padding: 0.25rem;
+
+    /* Permite posicionar o botão dentro do input. */
+    position: absolute;
+
+    /* Afasta o botão da borda direita. */
+    right: 0.65rem;
+
+    /* Posiciona verticalmente no meio do container. */
+    top: 50%;
+
+    /* Corrige o posicionamento para centralizar
+       exatamente o botão no eixo vertical. */
+    transform: translateY(-50%);
+}
+
+/* Área abaixo do campo usada para mensagens. */
+.field-feedback {
+
+    /* Usa uma cor neutra por padrão. */
+    color: var(--color-muted);
+
+    /* Define um tamanho menor para a mensagem. */
+    font-size: 0.78rem;
+
+    /* Remove a margem padrão. */
+    margin: 0;
+
+    /* Reserva um pequeno espaço mesmo quando
+       não há mensagem visível.
+       Isso evita que o layout fique pulando. */
+    min-height: 1.2em;
+}
+
+/* Quando a mensagem de feedback está visível como erro. */
+.field-feedback.is-visible {
+
+    /* Muda a cor para indicar erro. */
+    color: var(--color-danger);
+}
+
+/* Container do checkbox "Lembrar meu e-mail". */
+.checkbox-field {
+
+    /* Alinha o checkbox com o começo do texto. */
+    align-items: flex-start;
+
+    /* Usa uma cor mais suave para o texto. */
+    color: var(--color-muted);
+
+    /* Mostra o cursor de clique ao passar o mouse. */
+    cursor: pointer;
+
+    /* Organiza checkbox e texto lado a lado. */
+    display: flex;
+
+    /* Define o tamanho do texto. */
+    font-size: 0.88rem;
+
+    /* Cria espaço entre checkbox e texto. */
+    gap: 0.6rem;
+}
+
+/* Checkbox propriamente dito. */
+.checkbox-field input {
+
+    /* Usa a cor principal do sistema
+       para o checkbox quando marcado. */
+    accent-color: var(--color-primary);
+
+    /* Define a altura. */
+    height: 1rem;
+
+    /* Ajusta o alinhamento vertical com o texto. */
+    margin: 0.2rem 0 0;
+
+    /* Define a largura. */
+    width: 1rem;
+}
+
+/* Estilo base compartilhado dos botões. */
+.button {
+
+    /* Remove a borda padrão. */
+    border: 0;
+
+    /* Arredonda os cantos. */
+    border-radius: var(--radius-sm);
+
+    /* Deixa o texto do botão destacado. */
+    font-weight: 800;
+
+    /* Garante uma altura mínima confortável. */
+    min-height: 3rem;
+
+    /* Cria espaço interno. */
+    padding: 0.75rem 1rem;
+
+    /* Suaviza alterações de cor, movimento e sombra. */
+    transition: background-color var(--transition),
+                transform var(--transition),
+                box-shadow var(--transition);
+
+    /* Faz o botão ocupar toda a largura. */
+    width: 100%;
+}
+
+/* Botão principal do formulário. */
+.button-primary {
+
+    /* Usa a cor principal como fundo. */
+    background: var(--color-primary);
+
+    /* Adiciona uma sombra suave. */
+    box-shadow: 0 5px 12px rgba(31, 75, 153, 0.18);
+
+    /* Define o texto como branco. */
+    color: #fff;
+}
+
+/* Quando o mouse passa sobre o botão principal. */
+.button-primary:hover {
+
+    /* Usa uma variação mais escura da cor principal. */
+    background: var(--color-primary-hover);
+
+    /* Move o botão levemente para cima,
+       criando sensação de interação. */
+    transform: translateY(-1px);
+}
+
+/* Quando o botão está sendo pressionado. */
+.button-primary:active {
+
+    /* Volta para a posição normal,
+       criando um efeito visual de clique. */
+    transform: translateY(0);
+}
+
+/* Estilo base das mensagens de feedback geral. */
+.feedback {
+
+    /* Cria uma borda ao redor da mensagem. */
+    border: 1px solid;
+
+    /* Arredonda os cantos. */
+    border-radius: var(--radius-sm);
+
+    /* Define o tamanho da fonte. */
+    font-size: 0.9rem;
+
+    /* Cria espaço abaixo da mensagem. */
+    margin-bottom: 1.2rem;
+
+    /* Cria espaço interno. */
+    padding: 0.8rem 0.9rem;
+}
+
+/* Feedback de erro. */
+.feedback-error {
+
+    /* Usa um fundo suave relacionado à cor de erro. */
+    background: var(--color-danger-soft);
+
+    /* Define uma borda em tom vermelho claro. */
+    border-color: #fecdca;
+
+    /* Usa a cor de erro no texto. */
+    color: var(--color-danger);
+}
+
+/* Feedback de sucesso. */
+.feedback-success {
+
+    /* Usa um fundo suave relacionado à cor de sucesso. */
+    background: var(--color-success-soft);
+
+    /* Define uma borda verde clara. */
+    border-color: #abefc6;
+
+    /* Usa a cor de sucesso no texto. */
+    color: var(--color-success);
+}
+
+/* Rodapé do formulário,
+   onde normalmente fica "Já possui conta?" etc. */
+.auth-footer {
+
+    /* Usa uma cor suave para o texto secundário. */
+    color: var(--color-muted);
+
+    /* Define o tamanho do texto. */
+    font-size: 0.9rem;
+
+    /* Cria espaço acima do rodapé. */
+    margin: 1.6rem 0 0;
+
+    /* Centraliza o texto. */
+    text-align: center;
+}
+
+/* Links dentro do rodapé. */
+.auth-footer a {
+
+    /* Dá mais destaque visual ao link. */
+    font-weight: 800;
+}
+
+
+/* RESPONSIVIDADE */
+
+/* As regras abaixo são aplicadas quando a tela
+   tiver pelo menos 40rem de largura.
+
+   Se considerarmos 1rem = 16px:
+   40 × 16 = aproximadamente 640px. */
+@media (min-width: 40rem) {
+
+    /* Em telas maiores, aumenta o espaço interno do card. */
+    .auth-card {
+        padding: 2.5rem;
+    }
+}

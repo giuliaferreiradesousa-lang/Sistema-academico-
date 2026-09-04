@@ -1,0 +1,136 @@
+/* Estilos exclusivos da consulta pública de produtos. */
+.catalog-page {
+    min-height: 100vh;
+}
+
+.public-header {
+    align-items: center;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+}
+
+.public-login-link,
+.public-nav-link {
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 800;
+    padding: 0.55rem 0.75rem;
+    text-decoration: none;
+}
+
+.public-login-link:hover,
+.public-nav-link:hover,
+.public-nav-link.is-active {
+    background: var(--color-primary-soft);
+}
+
+.public-nav-link.is-active {
+    color: var(--color-primary);
+}
+
+.public-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    margin-left: auto;
+}
+
+.public-logout-link {
+    color: var(--color-danger);
+}
+
+.public-logout-link:hover {
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+}
+
+.catalog-content {
+    margin: 0 auto;
+    max-width: 76rem;
+    padding: 2rem 1.25rem;
+}
+
+.product-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+.product-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 13px rgba(23, 32, 51, 0.04);
+    display: flex;
+    flex-direction: column;
+    padding: 1.35rem;
+}
+
+.product-label {
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.product-card h2 {
+    font-size: 1.1rem;
+    margin: 0.45rem 0 1rem;
+}
+
+.product-price {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.product-stock {
+    font-size: 0.88rem;
+    margin: 0.5rem 0 1.25rem;
+}
+
+.product-stock.is-available {
+    color: var(--color-success);
+}
+
+.product-stock.is-empty {
+    color: var(--color-danger);
+}
+
+.product-action {
+    background: var(--color-primary);
+    border: 0;
+    border-radius: var(--radius-sm);
+    color: #fff;
+    font-weight: 800;
+    margin-top: auto;
+    min-height: 2.75rem;
+    padding: 0.65rem 0.9rem;
+}
+
+.product-action:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+}
+
+@media (min-width: 40rem) {
+    .catalog-content {
+        padding: 3rem;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 64rem) {
+    .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

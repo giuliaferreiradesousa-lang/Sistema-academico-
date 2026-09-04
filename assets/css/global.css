@@ -1,0 +1,397 @@
+/* Variáveis compartilhadas:
+   elas funcionam como valores reutilizáveis em todo o projeto.
+   Assim, se quiser trocar uma cor depois, você altera em um lugar só. */
+:root {
+
+    /* Cor principal do sistema.
+       É usada em botões, links, ícones e destaques. */
+    --color-primary: #1f4b99;
+
+    /* Versão mais escura da cor principal.
+       Normalmente usada quando o mouse passa sobre um elemento. */
+    --color-primary-hover: #173d80;
+
+    /* Versão bem clara da cor principal.
+       É usada em fundos suaves e elementos de destaque. */
+    --color-primary-soft: #e8f0ff;
+
+    /* Cor principal dos textos. */
+    --color-text: #172033;
+
+    /* Cor usada em textos secundários,
+       como descrições e informações menos importantes. */
+    --color-muted: #64748b;
+
+    /* Cor padrão das bordas. */
+    --color-border: #d8e0ec;
+
+    /* Cor de fundo geral das páginas. */
+    --color-page: #f5f7fb;
+
+    /* Cor das superfícies, como cards e formulários. */
+    --color-surface: #ffffff;
+
+    /* Cor usada para mensagens e ações de erro. */
+    --color-danger: #b42318;
+
+    /* Fundo suave para mensagens de erro. */
+    --color-danger-soft: #fef3f2;
+
+    /* Cor usada para mensagens de sucesso. */
+    --color-success: #067647;
+
+    /* Fundo suave para mensagens de sucesso. */
+    --color-success-soft: #ecfdf3;
+
+    /* Sombra padrão usada nos cards do sistema. */
+    --shadow-card: 0 14px 34px rgba(23, 32, 51, 0.08);
+
+    /* Raio pequeno para arredondar cantos. */
+    --radius-sm: 0.5rem;
+
+    /* Raio médio para arredondar cantos. */
+    --radius-md: 0.875rem;
+
+    /* Raio maior para cards e elementos de maior destaque. */
+    --radius-lg: 1.25rem;
+
+    /* Tempo e tipo de animação usado em transições. */
+    --transition: 160ms ease;
+}
+
+
+/* Seleciona todos os elementos da página. */
+* {
+
+    /* Faz largura e altura incluírem padding e border.
+       Isso facilita muito o controle dos tamanhos no CSS. */
+    box-sizing: border-box;
+}
+
+
+/* Estiliza o elemento raiz da página HTML. */
+html {
+
+    /* Faz a rolagem da página acontecer suavemente
+       quando existe navegação para uma âncora. */
+    scroll-behavior: smooth;
+}
+
+
+/* Estilos gerais aplicados ao corpo da página. */
+body {
+
+    /* Remove a margem padrão que o navegador coloca no body. */
+    margin: 0;
+
+    /* Define a cor de fundo geral da página. */
+    background: var(--color-page);
+
+    /* Define a cor padrão dos textos. */
+    color: var(--color-text);
+
+    /* Define a família de fontes.
+       O navegador tenta usar Inter primeiro.
+       Se não existir, tenta Segoe UI, Roboto, Arial
+       e por último uma fonte genérica sem serifa. */
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+
+    /* Define o espaço vertical entre as linhas de texto. */
+    line-height: 1.5;
+}
+
+
+/* Estilo padrão de todos os links. */
+a {
+
+    /* Usa a cor principal do sistema. */
+    color: var(--color-primary);
+
+    /* Afasta um pouco o sublinhado do texto,
+       deixando o link visualmente mais agradável. */
+    text-underline-offset: 0.18em;
+}
+
+
+/* Quando o mouse passa sobre qualquer link. */
+a:hover {
+
+    /* Muda para uma versão mais escura da cor principal. */
+    color: var(--color-primary-hover);
+}
+
+
+/* Aplica a mesma configuração tipográfica
+   aos botões e campos de formulário. */
+button,
+input {
+
+    /* Faz esses elementos herdarem a fonte
+       utilizada pelo elemento pai. */
+    font: inherit;
+}
+
+
+/* Estilo geral dos botões. */
+button {
+
+    /* Mostra o cursor de clique ao passar sobre o botão. */
+    cursor: pointer;
+}
+
+
+/* Estilo aplicado quando um botão está desativado. */
+button:disabled {
+
+    /* Muda o cursor para indicar que não é possível clicar. */
+    cursor: not-allowed;
+
+    /* Deixa o botão mais transparente,
+       criando aparência de desativado. */
+    opacity: 0.65;
+}
+
+
+/* O foco visível ajuda quem navega pelo teclado
+   a identificar qual elemento está selecionado. */
+:focus-visible {
+
+    /* Cria um contorno azul ao redor do elemento com foco. */
+    outline: 3px solid rgba(31, 75, 153, 0.35);
+
+    /* Afasta o contorno do elemento,
+       deixando o foco mais fácil de visualizar. */
+    outline-offset: 3px;
+}
+
+
+/* Classe usada para representar a marca/nome do sistema. */
+.brand {
+
+    /* Centraliza verticalmente os elementos da marca. */
+    align-items: center;
+
+    /* Usa a cor principal de texto da interface. */
+    color: var(--color-text);
+
+    /* Organiza os elementos em linha usando Flexbox,
+       sem ocupar obrigatoriamente toda a largura. */
+    display: inline-flex;
+
+    /* Define o tamanho do texto da marca. */
+    font-size: 1rem;
+
+    /* Deixa o nome da marca em destaque. */
+    font-weight: 750;
+
+    /* Cria espaço entre o símbolo da marca e o nome. */
+    gap: 0.65rem;
+
+    /* Remove o sublinhado caso a marca seja um link. */
+    text-decoration: none;
+}
+
+
+/* Quando o mouse passa sobre a marca. */
+.brand:hover {
+
+    /* Mantém a mesma cor.
+       Isso evita que ela fique azul como um link comum. */
+    color: var(--color-text);
+}
+
+
+/* Pequeno símbolo visual localizado ao lado do nome da marca. */
+.brand-mark {
+
+    /* Centraliza verticalmente o conteúdo do símbolo. */
+    align-items: center;
+
+    /* Usa a cor principal como fundo. */
+    background: var(--color-primary);
+
+    /* Arredonda os cantos do símbolo. */
+    border-radius: var(--radius-sm);
+
+    /* Define o texto/ícone como branco. */
+    color: #fff;
+
+    /* Permite usar Flexbox mantendo o elemento
+       no tamanho necessário. */
+    display: inline-flex;
+
+    /* Define o tamanho do texto dentro do símbolo. */
+    font-size: 0.9rem;
+
+    /* Define a altura do quadrado. */
+    height: 2rem;
+
+    /* Centraliza horizontalmente o conteúdo. */
+    justify-content: center;
+
+    /* Define a largura igual à altura,
+       criando um quadrado. */
+    width: 2rem;
+}
+
+
+/* Pequeno texto usado acima de títulos principais,
+   geralmente como categoria ou identificação da seção. */
+.eyebrow {
+
+    /* Usa a cor principal para dar destaque. */
+    color: var(--color-primary);
+
+    /* Usa uma fonte pequena. */
+    font-size: 0.75rem;
+
+    /* Deixa o texto bem destacado. */
+    font-weight: 800;
+
+    /* Aumenta o espaço entre as letras. */
+    letter-spacing: 0.09em;
+
+    /* Remove a margem padrão. */
+    margin: 0;
+
+    /* Transforma visualmente o texto em letras maiúsculas. */
+    text-transform: uppercase;
+}
+
+
+/* Cabeçalho e mensagens reutilizados nas páginas de consulta. */
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: clamp(1.7rem, 5vw, 2.4rem);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin: 0.35rem 0 0.55rem;
+}
+
+.page-header p:not(.eyebrow) {
+    color: var(--color-muted);
+    margin: 0;
+}
+
+.consulta-feedback,
+.consulta-empty {
+    border-radius: var(--radius-sm);
+    margin: 0;
+    padding: 0.85rem;
+}
+
+.consulta-feedback-error {
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+}
+
+.consulta-empty {
+    background: var(--color-page);
+    color: var(--color-muted);
+}
+
+
+/* Estrutura compartilhada pelas páginas autenticadas. */
+.dashboard-page {
+    min-height: 100vh;
+}
+
+.dashboard-shell {
+    min-height: 100vh;
+}
+
+.sidebar {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+}
+
+.brand-sidebar {
+    margin-right: auto;
+}
+
+.sidebar-nav {
+    align-items: center;
+    display: flex;
+    gap: 0.2rem;
+    order: 3;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.nav-link,
+.logout-link {
+    border-radius: var(--radius-sm);
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.6rem 0.75rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.is-active {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+}
+
+.logout-link {
+    color: var(--color-danger);
+}
+
+.logout-link:hover {
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+}
+
+.dashboard-content {
+    margin: 0 auto;
+    max-width: 76rem;
+    padding: 2rem 1.25rem;
+}
+
+@media (min-width: 48rem) {
+    .dashboard-shell {
+        display: grid;
+        grid-template-columns: 15rem minmax(0, 1fr);
+    }
+
+    .sidebar {
+        border-bottom: 0;
+        border-right: 1px solid var(--color-border);
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 2rem;
+        min-height: 100vh;
+        padding: 1.5rem 1rem;
+    }
+
+    .brand-sidebar {
+        margin-right: 0;
+        padding: 0 0.5rem;
+    }
+
+    .sidebar-nav {
+        align-items: stretch;
+        flex-direction: column;
+        order: initial;
+        width: auto;
+    }
+
+    .logout-link {
+        margin-top: auto;
+    }
+
+    .dashboard-content {
+        padding: 3rem;
+        width: 100%;
+    }
+}
