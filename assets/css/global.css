@@ -276,6 +276,7 @@ button:disabled {
     margin: 0;
 }
 
+/* Aparência das mensagens de erro e de lista vazia. */
 .consulta-feedback,
 .consulta-empty {
     border-radius: var(--radius-sm);
@@ -316,6 +317,7 @@ button:disabled {
     margin-right: auto;
 }
 
+/* Organiza os links do menu das páginas restritas. */
 .sidebar-nav {
     align-items: center;
     display: flex;
@@ -357,6 +359,7 @@ button:disabled {
     padding: 2rem 1.25rem;
 }
 
+/* Em telas maiores, coloca o menu ao lado do conteúdo. */
 @media (min-width: 48rem) {
     .dashboard-shell {
         display: grid;

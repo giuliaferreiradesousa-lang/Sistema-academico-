@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Estrutura para tabela `usuario`
 --
 
+-- Guarda os dados das contas; a senha é armazenada como hash.
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
@@ -47,6 +48,7 @@ INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`) VALUES
 -- Estrutura para tabela `produto`
 --
 
+-- Guarda o nome, o preço e a quantidade de cada produto.
 CREATE TABLE `produto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
@@ -72,6 +74,7 @@ INSERT INTO `produto` (`nome`, `preco`, `estoque`) VALUES
 -- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
+  -- Define o identificador da conta e impede e-mails repetidos.
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 

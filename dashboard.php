@@ -1,7 +1,8 @@
 <?php
-// A sessão identifica quem fez login e protege esta página contra acessos diretos.
+// Abre a sessão para consultar os dados do login.
 session_start();
 
+// Se faltarem dados do login, volta para a tela de entrada.
 if (!isset($_SESSION['usuario_id'], $_SESSION['usuario_nome'], $_SESSION['usuario_email'])) {
     header('Location: login.php');
     exit;
@@ -38,6 +39,7 @@ if ($erroConexao !== null) {
     }
 }
 
+// Exibe o texto sem interpretá-lo como HTML.
 function escaparDashboard(string $texto): string
 {
     return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');

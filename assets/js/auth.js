@@ -1,5 +1,4 @@
-// Este comentário explica que o JavaScript abaixo altera apenas
-// a forma como a senha aparece na tela, sem validar a senha.
+// Mostra ou esconde a senha, sem conferir se ela está correta.
 document.querySelectorAll('[data-password-toggle]').forEach((botao) => {
 
     // Para cada botão encontrado, adiciona um evento de clique.

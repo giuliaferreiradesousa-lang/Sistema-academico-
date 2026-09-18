@@ -27,6 +27,7 @@ O sistema permite criar uma conta, entrar em uma área restrita e sair dela com 
 - Consulta de nome e e-mail no banco dentro do dashboard, usando o e-mail da sessão.
 - Consulta protegida de usuários, sem exibir senhas ou hashes.
 - Consulta pública de produtos com nome, preço, estoque e botão demonstrativo.
+- Exclusão de produtos com ID enviado pela URL e consulta preparada com PDO.
 - Logout que encerra a sessão corretamente.
 - Cookie “Lembrar meu e-mail neste dispositivo”, sem salvar a senha.
 - Interface visual consistente para login e cadastro.
@@ -52,6 +53,7 @@ atividade0409/
 ├── insert-user.php
 ├── dashboard.php
 ├── produtos.php
+├── delete.php
 ├── usuarios.php
 ├── logout.php
 ├── sistema.sql
@@ -68,7 +70,8 @@ atividade0409/
 | `insert-user.php` | Mostra o cadastro, valida os campos e salva o novo usuário. |
 | `dashboard.php` | Área restrita acessível apenas após login. |
 | `produtos.php` | Consulta pública de produtos em cards responsivos. |
-| `usuarios.php` | Lista os IDs, nomes e e-mails dos usuários autenticados. |
+| `delete.php` | Recebe o ID pela URL e exclui o produto usando PDO. |
+| `usuarios.php` | Lista todas as contas cadastradas; exige login para acessar. |
 | `logout.php` | Encerra a sessão e volta para o login. |
 | `sistema.sql` | Estrutura e dado inicial do banco. |
 | `assets/css/` | Estilos globais, de autenticação, dashboard, produtos e usuários. |
@@ -159,6 +162,12 @@ A página `usuarios.php` é acessível apenas com uma sessão válida. Ela execu
 ## Consulta de produtos
 
 A página pública `produtos.php` executa uma consulta preparada para recuperar `id`, `nome`, `preco` e `estoque` da tabela `produto`. Os produtos são apresentados em cards responsivos. O botão “Comprar” é apenas visual e não cria carrinho, pedido ou checkout.
+
+### Exclusão de produtos
+
+Cada produto listado possui um link “Excluir”, que envia o ID pela URL para `delete.php`, por exemplo: `delete.php?id=3`. Esse arquivo recebe o ID por `$_GET['id']`, valida o valor e reutiliza a conexão de `conexao.php`.
+
+A exclusão utiliza PDO com `prepare()` e `execute()` para executar `DELETE FROM produto WHERE id = :id`. A página informa se o produto foi excluído ou não foi encontrado, trata erros com `try/catch` e `PDOException` e oferece um link para voltar à listagem e conferir a remoção.
 
 ## Cookie “Lembrar de mim”
 

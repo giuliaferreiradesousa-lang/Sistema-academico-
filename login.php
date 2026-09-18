@@ -2,12 +2,14 @@
 // session_start() permite ler e criar dados que permanecem enquanto o usuário navega no sistema.
 session_start();
 
+// Quem já entrou vai direto para o dashboard.
 if (isset($_SESSION['usuario_id'])) {
     header('Location: dashboard.php');
     exit;
 }
 
 $erros = [];
+// Lê a mensagem do cadastro e a remove da sessão para exibir só uma vez.
 $mensagemSucesso = $_SESSION['flash_sucesso'] ?? '';
 unset($_SESSION['flash_sucesso']);
 
@@ -17,6 +19,7 @@ $emailLembrado = $_COOKIE['email'] ?? '';
 $email = $emailLembrado;
 $lembrarMarcado = $emailLembrado !== '';
 
+// Confere os dados quando o formulário é enviado.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $senha = (string) ($_POST['senha'] ?? '');
@@ -96,6 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// Exibe o texto sem interpretá-lo como HTML.
 function escaparLogin(string $texto): string
 {
     return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');

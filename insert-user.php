@@ -2,6 +2,7 @@
 // A sessão também é usada para levar a mensagem de sucesso até a tela de login.
 session_start();
 
+// Quem já entrou vai direto para o dashboard.
 if (isset($_SESSION['usuario_id'])) {
     header('Location: dashboard.php');
     exit;
@@ -11,12 +12,14 @@ $erros = [];
 $nome = '';
 $email = '';
 
+// Recebe os dados enviados pelo formulário.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = trim($_POST['nome'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $senha = (string) ($_POST['senha'] ?? '');
     $confirmarSenha = (string) ($_POST['confirmar_senha'] ?? '');
 
+    // Confere nome, e-mail, senha e confirmação antes de cadastrar.
     if ($nome === '') {
         $erros['nome'] = 'Informe seu nome.';
     } elseif (mb_strlen($nome) < 3) {
@@ -41,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erros['confirmar_senha'] = 'As senhas não coincidem.';
     }
 
+    // Só tenta salvar quando não há erros nos campos.
     if ($erros === []) {
         require 'conexao.php';
 
@@ -74,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// Exibe o texto sem interpretá-lo como HTML.
 function escaparCadastro(string $texto): string
 {
     return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');

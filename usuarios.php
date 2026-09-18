@@ -2,6 +2,7 @@
 // A consulta de usuários é restrita porque mostra e-mails de contas cadastradas.
 session_start();
 
+// Exige os dados do login antes de mostrar a lista.
 if (!isset($_SESSION['usuario_id'], $_SESSION['usuario_nome'], $_SESSION['usuario_email'])) {
     header('Location: login.php');
     exit;
@@ -16,7 +17,7 @@ if ($erroConexao !== null) {
     $erroConsulta = $erroConexao;
 } else {
     try {
-        // A consulta preparada recupera apenas os dados permitidos para a listagem.
+        // Lista todas as contas cadastradas, com os maiores IDs primeiro.
         // A senha e seu hash nunca são exibidos nesta página.
         $sql = 'SELECT id, nome, email FROM usuario ORDER BY id DESC';
         $resultado = $conexao->prepare($sql);
@@ -28,6 +29,7 @@ if ($erroConexao !== null) {
     }
 }
 
+// Exibe o texto sem interpretá-lo como HTML.
 function escaparUsuarios(string $texto): string
 {
     return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');

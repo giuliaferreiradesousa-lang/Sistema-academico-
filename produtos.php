@@ -354,6 +354,11 @@ function escaparProdutos(string $texto): string
                             Comprar
                         </button> 
 
+                        <!-- Envia o ID do produto pela URL para realizar a exclusão. -->
+                        <a class="public-nav-link public-logout-link" href="delete.php?id=<?= (int) $produto['id'] ?>">
+                            Excluir
+                        </a>
+
                     </article> 
 
 
